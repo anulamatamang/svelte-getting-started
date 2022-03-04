@@ -1,13 +1,17 @@
 <script>
   // dispatch custom event to delete item with corresponding itemId in the App component
-  import { createEventDispatcher } from 'svelte';
+  // import { createEventDispatcher } from 'svelte';
+  import { FeedbackStore } from '../stores';
   import Card from './Card.svelte';
   export let item;
 
-  const dispatch = createEventDispatcher();
+  // const dispatch = createEventDispatcher();
 
   const handleDelete = (itemId) => {
-    dispatch('delete-feedback', itemId);
+    // dispatch('delete-feedback', itemId);
+    FeedbackStore.update((currentFeedback) => {
+      return currentFeedback.filter((item) => item.id != itemId);
+    });
   };
 </script>
 
