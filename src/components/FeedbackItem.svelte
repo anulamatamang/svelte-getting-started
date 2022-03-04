@@ -1,9 +1,13 @@
 <script>
+  // dispatch custom event to delete item with corresponding itemId in the App component
+  import { createEventDispatcher } from 'svelte';
   import Card from './Card.svelte';
   export let item;
 
+  const dispatch = createEventDispatcher();
+
   const handleDelete = (itemId) => {
-    console.log(itemId);
+    dispatch('delete-feedback', itemId);
   };
 </script>
 
